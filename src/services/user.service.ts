@@ -26,10 +26,7 @@ export const findAllUsers = async () => {
 };
 
 // Find one user by any fields
-export const findUser = async (
-  query: FilterQuery<User>,
-  options: QueryOptions = {}
-) => {
+export const findUser = async (query: FilterQuery<User>, options: QueryOptions = {}) => {
   return await userModel.findOne(query, {}, options).select("+password");
 };
 

@@ -1,10 +1,4 @@
-import {
-  getModelForClass,
-  index,
-  modelOptions,
-  pre,
-  prop,
-} from "@typegoose/typegoose";
+import { getModelForClass, index, modelOptions, pre, prop } from "@typegoose/typegoose";
 import bcrypt from "bcryptjs";
 
 @index({ email: 1 })

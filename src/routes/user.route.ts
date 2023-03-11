@@ -1,8 +1,5 @@
 import express from "express";
-import {
-  getAllUsersHandler,
-  getMeHandler,
-} from "../controllers/user.controller.js";
+import { getAllUsersHandler, getMeHandler } from "../controllers/user.controller.js";
 import { deserializeUser } from "../middleware/users/user-deserializer.js";
 import { requireUser } from "../middleware/users/user-requirement.js";
 import { restrictTo } from "../middleware/users/users-authorization.js";

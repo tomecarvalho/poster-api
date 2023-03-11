@@ -9,17 +9,14 @@ export const excludedFields = ["password"];
 
 // Cookie options
 const accessTokenCookieOptions: CookieOptions = {
-  expires: new Date(
-    Date.now() + env.ACCESS_TOKEN_EXPIRES_IN * 60 * 1e3
-  ),
+  expires: new Date(Date.now() + env.ACCESS_TOKEN_EXPIRES_IN * 60 * 1e3),
   maxAge: env.ACCESS_TOKEN_EXPIRES_IN * 60 * 1e3,
   httpOnly: true,
   sameSite: "lax",
 };
 
 // Only set secure to true in production
-if (process.env.NODE_ENV === "production")
-  accessTokenCookieOptions.secure = true;
+if (process.env.NODE_ENV === "production") accessTokenCookieOptions.secure = true;
 
 export const registerHandler = async (
   req: Request<{}, {}, CreateUserInput>,
@@ -60,10 +57,7 @@ export const loginHandler = async (
     const user = await findUser({ email: req.body.email });
 
     // Check if user exist and password is correct
-    if (
-      !user ||
-      !(await user.comparePasswords(user.password, req.body.password))
-    ) {
+    if (!user || !(await user.comparePasswords(user.password, req.body.password))) {
       return next(new AppError("Invalid email or password", 401));
     }
 

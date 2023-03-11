@@ -4,18 +4,11 @@ import redisClient from "../../utils/connection/redis/redis-connection.js";
 import AppError from "../../utils/error-handling/AppError.js";
 import { verifyJwt } from "../../utils/jwt/jwt.js";
 
-export const deserializeUser = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const deserializeUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
     // Get the token
     let access_token;
-    if (
-      req.headers.authorization &&
-      req.headers.authorization.startsWith("Bearer")
-    ) {
+    if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
       access_token = req.headers.authorization.split(" ")[1];
     } else if (req.cookies.access_token) {
       access_token = req.cookies.access_token;

@@ -1,8 +1,7 @@
 import jwt, { SignOptions } from "jsonwebtoken";
 import env from "../../env/env.js";
 
-const keyToAscii = (key: string) =>
-  Buffer.from(key, "base64").toString("ascii");
+const keyToAscii = (key: string) => Buffer.from(key, "base64").toString("ascii");
 
 export const signJwt = (payload: Object, options: SignOptions = {}) => {
   const privateKey = keyToAscii(env.ACCESS_TOKEN_PRIVATE_KEY);
